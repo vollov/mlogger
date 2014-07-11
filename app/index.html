@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+	
+		<title>Sample theme</title>
+		
+		<!-- Bootstrap core CSS -->
+		<link href="/css/bootstrap.css" rel="stylesheet">
+		<!-- Custom styles for this template  -->
+		<link href="/css/styles.css" rel="stylesheet">
+		<link href="/css/jquery-ui.css" rel="stylesheet">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/js/vendor/html5shiv/3.7.0/html5shiv.js"></script>
+			<script src="https://oss.maxcdn.com/js/vendor/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+<body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<span class="brand">Trips</span>
+			</div>
+		</div>
+	</div>
+
+	<div id="main-region" class="container">
+		<p>Here is static content in the web page. You'll notice that it
+			gets replaced by our app as soon as we start it.</p>
+	</div>
+
+	<div id="dialog-region"></div>
+
+	<script type="text/template" id="trip-list-layout">
+		<div id="panel-region"></div>
+		<div id="trips-region"></div>
+	</script>
+	
+	<script type="text/template" id="trip-list-panel">
+		<button class="btn btn-primary js-new">New trip</button>
+	</script>
+
+	<script type="text/template" id="trip-list-item">
+		<td><%- description %> </td>
+		<td><%- startMileage %> </td>
+		<td><%- endMileage %> </td>
+		<td><%- (endMileage - startMileage ) %> </td>
+
+		<td>
+			<a href="#trips/<%- id %>" class="btn btn-primary btn-sm js-show">
+				<i class="glyphicon glyphicon-eye-open"></i>
+				Show
+			</a>
+			<a href="#trips/<%- id %>/edit" class="btn btn-primary btn-sm js-edit">
+				<i class="glyphicon glyphicon-pencil"></i>
+				Edit
+			</a>
+			<button type="button" class="btn btn-primary btn-sm js-delete">
+				<i class="glyphicon glyphicon-remove"></i>
+				Delete
+			</button>
+		</td>
+	</script>
+
+	<script type="text/template" id="trip-list">
+	<thead>
+		<tr>
+			<th>Description</th>
+			<th>Start</th>
+			<th>End</th>
+			<th>Distance</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	</tbody>
+	</script>
+	
+	<script type="text/template" id="trip-form">
+		
+		<form>
+			<div class="control-group">
+				<label for="trip-description" class="control-label">Description:</label>
+				<input id="trip-description" name="description" type="text" value="<%- description %>"/>
+			</div>
+			<div class="control-group">
+				<label for="trip-startMileage" class="control-label">Start:</label>
+				<input id="trip-startMileage" name="startMileage" type="text" value="<%- startMileage %>"/>
+			</div>
+			<div class="control-group">
+				<label for="trip-endMileage" class="control-label">End:</label>
+				<input id="trip-endMileage" name="endMileage" type="text" value="<%- endMileage %>"/>
+			</div>
+			<button class="btn btn-primary js-submit">Save</button>
+		</form>
+	</script>
+	
+	
+	<script type="text/template" id="trip-view">
+		<ul>
+			<li><strong>description:</strong><%- description %></li>
+			<li><strong>start:</strong><%- startMileage %></li>
+			<li><strong>end:</strong><%- endMileage %></li>
+		</ul>
+	</script>
+	
+	<script src="js/vendor/jquery/jquery.js" type="text/javascript"></script>
+	<script src="js/vendor/jquery/jquery-ui.js" type="text/javascript"></script>
+	<script src="js/vendor/underscore/underscore.js" type="text/javascript"></script>
+	<script src="js/vendor/backbone/backbone.js"></script>
+	<script src="js/vendor/backbone/backbone.syphon.js"></script>
+	<script src="js/vendor/backbone.localStorage/backbone.localStorage.js"></script>
+	<script src="js/vendor/backbone/backbone.marionette.js"></script>
+	
+	<script src="js/vendor/spin/spin.js"></script>
+	<script src="js/vendor/spin/spin.jquery.js"></script>
+
+	<!-- UI js/vendor   -->
+	<script src="js/vendor/twitter/bootstrap.js"></script>
+	
+	<script src="js/app.js"></script>
+	<script src="js/apps/config/storage/localstorage.js"></script>
+	<script src="js/entities/trip.js"></script>
+	<script src="js/apps/trips/trips_app.js"></script>
+	<script src="js/apps/trips/common/views.js"></script>
+	
+	<script src="js/apps/trips/list/list_view.js"></script>
+	<script src="js/apps/trips/list/list_controller.js"></script>
+	
+	
+	<script src="js/apps/trips/show/show_view.js"></script>
+	<script src="js/apps/trips/show/show_controller.js"></script>
+	
+	
+	<script src="js/apps/trips/edit/edit_view.js"></script>
+	<script src="js/apps/trips/edit/edit_controller.js"></script>
+	
+	
+	<script type="text/javascript">
+		MileageApp.start();
+	</script>
+</body>
+</html> 
